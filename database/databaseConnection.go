@@ -39,3 +39,9 @@ func DBinstance() *mongo.Client {
 }
 
 var Client *mongo.Client = DBinstance()
+
+// this function allows us to access a particular collection in the database
+func OpenCollection(client *mongo.Client, collectionName string) *mongo.Collection {
+	var collection *mongo.Collection = (*mongo.Collection)(client).Database().Collection(collectionName)
+	return collection
+}
